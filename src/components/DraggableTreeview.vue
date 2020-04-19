@@ -25,9 +25,6 @@
       @input="updateItem"
       @resetHighlight="resetHighlight"
     )
-      slot(name="prepend" v-bind="{ value, open }")
-      slot(name="label" v-bind="{ value, open }")
-      slot(name="append" v-bind="{ value }")
 </template>
 
 <script lang="ts">
