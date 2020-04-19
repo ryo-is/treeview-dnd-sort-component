@@ -80,6 +80,7 @@ export default Vue.extend({
     }
   },
   methods: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onMove(e: any) {
       this.$emit('resetHighlight')
       e.to.__vue__.$parent.highlight = true
@@ -92,6 +93,7 @@ export default Vue.extend({
       this.highlight = bool
       if (this.$refs.treeViewNode) {
         const refs = this.$refs.treeViewNode as Vue[]
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         refs.forEach((ref: any) => {
           ref.changeHighlight(false)
         })

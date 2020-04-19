@@ -15,7 +15,7 @@
         slot(name="label" v-bind="{ value, open }")
           v-list-item(dense)
             v-list-item-content
-              v-list-item-title(:class="{'font-weight-bold': highlight}") {{value.name}}
+              v-list-item-title.text-left(:class="{'font-weight-bold': highlight}") {{value.name}}
             v-spacer
           v-divider
       slot(name="append" v-bind="{ value }")
@@ -150,7 +150,9 @@ export default Vue.extend({
       this.$emit('input', this.localValue)
     },
     updateChildValue(value: TreeItem) {
+      console.log('updateChildValue')
       this.open = true
+      console.log(this.localValue[this.childKey])
       if (!this.localValue[this.childKey]) {
         this.localValue[this.childKey] = []
       }

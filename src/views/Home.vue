@@ -1,12 +1,13 @@
 <template lang="pug">
    v-container.home.px-8.py-4(fluid)
     v-row(align="center", justify="center")
-      v-col(cols=8)
+      v-col(cols=6)
         .title Treeview DnD Sort
-      v-col(cols=8)
-        v-spacer
-        v-switch.font-weight-bold.pt-0.mt-0(v-model="opened" label="Open / Close" hide-details, @change="toggle")
-      v-col(cols=8)
+      v-col.pa-0(cols=12)
+      v-col(cols=6)
+        v-switch.font-weight-bold.pt-0.mt-0(v-model="opened" label="Sort On / Off" hide-details, @change="sortGroups(opened)")
+      v-col.pa-0(cols=12)
+      v-col(cols=6)
         draggable-treeview(
           ref="treeview",
           v-model="value",
@@ -37,29 +38,30 @@ export default Vue.extend({
           id: 1,
           name: 'Parent1',
           children: [
-            { id: 11, name: 'Children1-1' },
-            { id: 12, name: 'Children1-2' }
+            { id: 11, name: 'Children1-1', children: [] },
+            { id: 12, name: 'Children1-2', children: [] }
           ]
         },
         {
           id: 2,
-          name: 'Parent2'
+          name: 'Parent2',
+          children: []
         },
         {
           id: 3,
           name: 'Parent1',
           children: [
-            { id: 31, name: 'Children3-1' },
+            { id: 31, name: 'Children3-1', children: [] },
             {
               id: 32,
               name: 'Children3-2',
-              children: [{ id: 321, name: 'Grandchild3-2-1' }]
+              children: [{ id: 321, name: 'Grandchild3-2-1', children: [] }]
             }
           ]
         }
       ],
       opened: false,
-      disabled: false
+      disabled: true
     }
   },
   methods: {
@@ -71,6 +73,10 @@ export default Vue.extend({
     },
     toggle(bool: boolean) {
       this.opened = bool
+    },
+    sortGroups(bool: boolean) {
+      this.opened = bool
+      this.disabled = !bool
     }
   }
 })
