@@ -1,5 +1,7 @@
 # treeview-dnd-sort-component
 
+![treeview.gif](https://github.com/ryo-is/treeview-dnd-sort-component/blob/upload_gif/treeview.gif)
+
 ## Project setup
 ```
 yarn install
